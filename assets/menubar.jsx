@@ -11,11 +11,11 @@ const SubMenu = Menu.SubMenu;
 class MenuBar extends React.Component {
     constructor() {
         super();
-        console.log('init', this);
         this.state = {current: '1'};
     }
 
     handleClick(e) {
+        this.props.onClick(e.key);
         this.setState({
             current: e.key,
         });
@@ -24,7 +24,7 @@ class MenuBar extends React.Component {
     render() {
         return (
             <Menu onClick={e=>this.handleClick(e)}
-                  style={{width: "100%"}}
+                  style={{width: "200px"}}
                   defaultOpenKeys={['game']}
                   selectedKeys={[this.state.current]}
                   mode="inline"

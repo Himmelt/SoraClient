@@ -15,7 +15,7 @@ class Component extends React.Component {
         return React.createElement(
             'div',
             null,
-            'hello world !'
+            'about'
         );
     }
 }

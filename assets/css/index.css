@@ -1,3 +1,7 @@
+html {
+    -webkit-user-select: none;
+}
+
 button {
     -webkit-app-region: no-drag;
 }

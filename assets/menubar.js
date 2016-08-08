@@ -11,11 +11,11 @@ const SubMenu = Menu.SubMenu;
 class MenuBar extends React.Component {
     constructor() {
         super();
-        console.log('init', this);
         this.state = {current: '1'};
     }
 
     handleClick(e) {
+        this.props.onClick(e.key);
         this.setState({
             current: e.key
         });
@@ -26,7 +26,7 @@ class MenuBar extends React.Component {
             Menu,
             {
                 onClick: e => this.handleClick(e),
-                style: {width: "100%"},
+                style: {width: "200px"},
                 defaultOpenKeys: ['game'],
                 selectedKeys: [this.state.current],
                 mode: 'inline'
@@ -35,8 +35,8 @@ class MenuBar extends React.Component {
                 SubMenu,
                 {
                     key: 'game', title: React.createElement(
-                    'span',
-                    null,
+                        'span',
+                        null,
                     React.createElement(Icon, {type: 'mail'}),
                     React.createElement(
                         'span',
@@ -60,8 +60,8 @@ class MenuBar extends React.Component {
                 SubMenu,
                 {
                     key: 'config', title: React.createElement(
-                    'span',
-                    null,
+                        'span',
+                        null,
                     React.createElement(Icon, {type: 'appstore'}),
                     React.createElement(
                         'span',
@@ -85,8 +85,8 @@ class MenuBar extends React.Component {
                 SubMenu,
                 {
                     key: 'system', title: React.createElement(
-                    'span',
-                    null,
+                        'span',
+                        null,
                     React.createElement(Icon, {type: 'setting'}),
                     React.createElement(
                         'span',
@@ -105,8 +105,8 @@ class MenuBar extends React.Component {
                 SubMenu,
                 {
                     key: 'guide', title: React.createElement(
-                    'span',
-                    null,
+                        'span',
+                        null,
                     React.createElement(Icon, {type: 'setting'}),
                     React.createElement(
                         'span',
@@ -130,8 +130,8 @@ class MenuBar extends React.Component {
                 SubMenu,
                 {
                     key: 'donate', title: React.createElement(
-                    'span',
-                    null,
+                        'span',
+                        null,
                     React.createElement(Icon, {type: 'setting'}),
                     React.createElement(
                         'span',
@@ -150,8 +150,8 @@ class MenuBar extends React.Component {
                 SubMenu,
                 {
                     key: 'about', title: React.createElement(
-                    'span',
-                    null,
+                        'span',
+                        null,
                     React.createElement(Icon, {type: 'setting'}),
                     React.createElement(
                         'span',

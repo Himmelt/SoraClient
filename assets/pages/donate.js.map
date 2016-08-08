@@ -7,6 +7,6 @@
   "mappings": "AAAA;;;;;;AAMA,MAAM,QAAQ,QAAQ,OAAR,CAAd;;AAEA,MAAM,SAAN,SAAwB,MAAM,SAA9B,CAAwC;AACpC,kBAAc;AACV;AACH;;AAED,aAAS;AACL,eACI;AAAA;AAAA;AAAA;AAAA,SADJ;AAKH;AAXmC;;AAcxC,OAAO,OAAP,GAAiB,SAAjB",
   "file": "donate.js",
   "sourcesContent": [
-    "/*******************************************************************************\r\n * Created by Himmelt on 2016/8/8.\r\n * Copyright (c) 2015-2016. Himmelt All rights reserved.\r\n * https://opensource.org/licenses/MIT\r\n ******************************************************************************/\r\n\r\nconst React = require('react');\r\n\r\nclass Component extends React.Component {\r\n    constructor() {\r\n        super();\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                hello world !\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nmodule.exports = Component;"
+    "/*******************************************************************************\r\n * Created by Himmelt on 2016/8/8.\r\n * Copyright (c) 2015-2016. Himmelt All rights reserved.\r\n * https://opensource.org/licenses/MIT\r\n ******************************************************************************/\r\n\r\nconst React = require('react');\r\n\r\nclass Component extends React.Component {\r\n    constructor() {\r\n        super();\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                donate\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nmodule.exports = Component;"
   ]
 }

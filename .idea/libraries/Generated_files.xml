@@ -4,8 +4,10 @@
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/assets/index.js" />
         <item url="file://$PROJECT_DIR$/assets/pages/config.js" />
+        <item url="file://$PROJECT_DIR$/assets/container.js" />
         <item url="file://$PROJECT_DIR$/assets/pages/system.js" />
         <item url="file://$PROJECT_DIR$/assets/topbar.js" />
+        <item url="file://$PROJECT_DIR$/assets/pages/MainContainer.js" />
         <item url="file://$PROJECT_DIR$/assets/pages/guide.js" />
         <item url="file://$PROJECT_DIR$/assets/menubar.js" />
         <item url="file://$PROJECT_DIR$/assets/pages/game.js" />
@@ -44,10 +46,13 @@
       <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/docs/routes.js" />
       <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/assets/menubar.js" />
       <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/docs/index.js" />
+      <root url="file://$PROJECT_DIR$/assets/pages/MainContainer.js" />
       <root url="file://$PROJECT_DIR$/assets/index.js" />
       <root url="file://$PROJECT_DIR$/assets/pages/config.js" />
+      <root url="file://$PROJECT_DIR$/assets/container.js" />
       <root url="file://$PROJECT_DIR$/assets/pages/system.js" />
       <root url="file://$PROJECT_DIR$/assets/topbar.js" />
+      <root url="file://$PROJECT_DIR$/assets/pages/MainContainer.js" />
       <root url="file://$PROJECT_DIR$/assets/pages/guide.js" />
       <root url="file://$PROJECT_DIR$/assets/menubar.js" />
       <root url="file://$PROJECT_DIR$/assets/pages/game.js" />

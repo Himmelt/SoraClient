@@ -6,9 +6,10 @@
 
 const React = require('react');
 const ReactDOM = require('react-dom');
-const {Row, Col} = require('antd');
+const { Row, Col } = require('antd');
 const MenuBar = require('./menubar');
 const TopBar = require('./topbar');
+const Container = require('./container');
 const fs = require('fs');
 const marked = require('marked');
 
@@ -16,15 +17,21 @@ class Layout extends React.Component {
     constructor() {
         super();
         var parent = this;
-        this.state = {mark: "loading", index: 1};
+        this.state = { mark: "loading", index: 1 };
+        this.handleMenu = this.handleMenu.bind(this);
         fs.readFile('./readme.md', 'utf-8', function (err, data) {
             if (err) {
                 console.log(err, "read readme.md failed!");
-                parent.setState({mark: "error:" + err});
+                parent.setState({ mark: "error:" + err });
             } else {
-                parent.setState({mark: marked(data)});
+                parent.setState({ mark: marked(data) });
             }
         });
+    }
+
+    handleMenu(key) {
+        console.log("Fuck", key);
+        this.setState({ index: key });
     }
 
     render() {
@@ -38,19 +45,19 @@ class Layout extends React.Component {
             ),
             React.createElement(
                 Row,
-                null,
+                { type: 'flex' },
                 React.createElement(
                     Col,
-                    {span: 5},
-                    React.createElement(MenuBar, null)
+                    null,
+                    React.createElement(MenuBar, { onClick: this.handleMenu })
                 ),
                 React.createElement(
                     Col,
-                    {span: 19, style: {color: 'red'}},
+                    { style: { color: 'red' } },
                     React.createElement(
                         'div',
                         null,
-                        'Content'
+                        React.createElement(Container, { index: this.state.index })
                     )
                 )
             )

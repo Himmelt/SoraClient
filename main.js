@@ -24,7 +24,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 800, height: 600,
         transparent: false,
-        frame: true,
+        frame: false,
         backgroundColor: '#c2efa4'
     });
 

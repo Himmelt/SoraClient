@@ -9,6 +9,7 @@ const ReactDOM = require('react-dom');
 const {Row, Col} = require('antd');
 const MenuBar = require('./menubar');
 const TopBar = require('./topbar');
+const Container = require('./container');
 const fs = require('fs');
 const marked = require('marked');
 
@@ -17,6 +18,7 @@ class Layout extends React.Component {
         super();
         var parent = this;
         this.state = {mark: "loading", index: 1};
+        this.handleMenu = this.handleMenu.bind(this);
         fs.readFile('./readme.md', 'utf-8', function (err, data) {
             if (err) {
                 console.log(err, "read readme.md failed!");
@@ -27,18 +29,25 @@ class Layout extends React.Component {
         })
     }
 
+    handleMenu(key) {
+        console.log("Fuck", key);
+        this.setState({index: key});
+    }
+
     render() {
         return (
             <div>
                 <Row>
                     <TopBar/>
                 </Row>
-                <Row>
-                    <Col span={5}>
-                        <MenuBar/>
+                <Row type="flex">
+                    <Col>
+                        <MenuBar onClick={this.handleMenu}/>
                     </Col>
-                    <Col span={19} style={{color: 'red'}}>
-                        <div>Content</div>
+                    <Col style={{color: 'red'}}>
+                        <div>
+                            <Container index={this.state.index}/>
+                        </div>
                     </Col>
                 </Row>
             </div>
