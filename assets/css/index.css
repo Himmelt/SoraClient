@@ -1,0 +1,15 @@
+button {
+    -webkit-app-region: no-drag;
+}
+
+.top-bar {
+    color: #00bbff;
+    padding: 10px;
+    background: rgba(255, 124, 0, 0.44);
+    -webkit-app-region: drag;
+}
+
+.menu-bar {
+    color: #ffbbbb;
+    background: salmon;
+}

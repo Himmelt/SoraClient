@@ -2,11 +2,57 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/index.js" />
+        <item url="file://$PROJECT_DIR$/assets/index.js" />
+        <item url="file://$PROJECT_DIR$/assets/pages/config.js" />
+        <item url="file://$PROJECT_DIR$/assets/pages/system.js" />
+        <item url="file://$PROJECT_DIR$/assets/topbar.js" />
+        <item url="file://$PROJECT_DIR$/assets/pages/guide.js" />
+        <item url="file://$PROJECT_DIR$/assets/menubar.js" />
+        <item url="file://$PROJECT_DIR$/assets/pages/game.js" />
+        <item url="file://$PROJECT_DIR$/assets/pages/about.js" />
+        <item url="file://$PROJECT_DIR$/assets/pages/donate.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/index.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-responsive-mixin/docs/demo.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/assets/pages/about.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/src/dots.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/docs/docs.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/src/inner-slider.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/src/slider.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/src/arrows.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/assets/topbar.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/docs/demos.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-responsive-mixin/docs/index.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/assets/index.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/src/track.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/docs/routes.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/assets/menubar.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/docs/index.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-responsive-mixin/docs/demo.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/assets/pages/about.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/src/dots.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/docs/docs.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/src/inner-slider.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/src/slider.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/src/arrows.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/assets/topbar.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/docs/demos.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-responsive-mixin/docs/index.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/assets/index.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/src/track.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/docs/routes.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/assets/menubar.js" />
+      <root url="file://$PROJECT_DIR$/SoraClient-win32-x64/resources/app/node_modules/react-slick/docs/index.js" />
+      <root url="file://$PROJECT_DIR$/assets/index.js" />
+      <root url="file://$PROJECT_DIR$/assets/pages/config.js" />
+      <root url="file://$PROJECT_DIR$/assets/pages/system.js" />
+      <root url="file://$PROJECT_DIR$/assets/topbar.js" />
+      <root url="file://$PROJECT_DIR$/assets/pages/guide.js" />
+      <root url="file://$PROJECT_DIR$/assets/menubar.js" />
+      <root url="file://$PROJECT_DIR$/assets/pages/game.js" />
+      <root url="file://$PROJECT_DIR$/assets/pages/about.js" />
+      <root url="file://$PROJECT_DIR$/assets/pages/donate.js" />
     </CLASSES>
     <SOURCES />
   </library>

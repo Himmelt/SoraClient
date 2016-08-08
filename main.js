@@ -11,11 +11,15 @@ const electron = require('electron');
 const app = electron.app;
 // 本地浏览器窗口创建模块
 const BrowserWindow = electron.BrowserWindow;
-
+// 进程通讯
+const ipcMain = electron.ipcMain;
+// 系统托盘
+const Tray = electron.Tray;
+const Menu = electron.Menu;
 // 对窗口对象使用全局引用,否则窗口会随着js的内存回收而关闭.
 let mainWindow;
 
-function createWindow () {
+function createWindow() {
     // 创建浏览器窗口
     mainWindow = new BrowserWindow({
         width: 800, height: 600,
@@ -35,7 +39,7 @@ function createWindow () {
         // 间接引用 window 对象. 如果你的应用支持多窗口,并存储在一个数组中,
         // 当你删除对应的窗口时,该程序被触发.
         mainWindow = null;
-});
+    });
 }
 
 // 初始化完毕,准备创建窗口时触发,某些API只能在该事件发生后使用.
@@ -45,16 +49,40 @@ app.on('ready', createWindow);
 app.on('window-all-closed', () => {
     // 对于OS X系统,应用和相应的菜单栏会一直激活直到用户通过Cmd + Q显式退出
     if (process.platform !== 'darwin') {
-    app.quit();
-}
+        if (appIcon) appIcon.destroy();
+        app.quit();
+    }
 });
 
 // 激活时触发
 app.on('activate', () => {
     // 对于OS X系统,当dock图标被点击后会重新创建一个app窗口,并且不会有其他窗口打开
     if (mainWindow === null) {
-    createWindow();
-}
+        createWindow();
+    }
 });
 
 // 在这里可以继续应用的主要程序代码,也可以放置于单独文件中,在此 require 即可.
+let appIcon = null;
+// 进程通讯监听
+ipcMain.on('put-in-tray', (event)=> {
+    appIcon = new Tray('app-icon.png');
+    const contextMenu = Menu.buildFromTemplate([{
+        label: 'Remove',
+        click: function () {
+            event.sender.send('tray-removed');
+            appIcon.destroy()
+        }
+    }]);
+    appIcon.setToolTip('Electron Demo in the tray.');
+    appIcon.setContextMenu(contextMenu)
+});
+ipcMain.on('remove-tray', ()=> {
+    appIcon.destroy()
+});
+ipcMain.on('app-close', ()=> {
+    app.quit();
+});
+ipcMain.on('app-mini', ()=> {
+    BrowserWindow.getFocusedWindow().minimize();
+});
