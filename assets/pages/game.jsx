@@ -5,16 +5,30 @@
  ******************************************************************************/
 
 const React = require('react');
+const {Button} = require('antd');
+const ipcR = require('electron').ipcRenderer;
 
 class Component extends React.Component {
     constructor() {
         super();
     }
 
+    handleClick() {
+        ipcR.send('launch-game');
+    }
+
+    handleClose() {
+        ipcR.send('launch-exit');
+    }
     render() {
         return (
             <div>
-                game
+                <Button onClick={this.handleClick}>
+                    启动
+                </Button>
+                <Button onClick={this.handleClose}>
+                    结束
+                </Button>
             </div>
         )
     }

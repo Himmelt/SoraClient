@@ -5,6 +5,7 @@
  ******************************************************************************/
 
 const React = require('react');
+const {Button} = require('antd');
 
 class Component extends React.Component {
     constructor() {
