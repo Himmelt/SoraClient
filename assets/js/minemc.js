@@ -1,66 +1,65 @@
-/**
+/*******************************************************************************
  * Created by Kami on 2016/4/18.
- */
+ * Copyright (c) 2015-2016. Himmelt All rights reserved.
+ * https://opensource.org/licenses/MIT
+ ******************************************************************************/
 
-function getJavaArgs(user,version,javax,code) {
-    const gameDir = ".minecraft";
-    var launch = "javaw -Xincgc -Xmn128m -Xmx"+javax+"m "+"-Dcheck="+code+" ",
-        file = require("fs"),path = gameDir+"\\versions\\"+version+"\\"+version+".json";
+const fs = require('fs');
+
+let libpath = (gamedir, lib)=> {
+    if (lib.natives == null) {
+        let split = lib.name.split(':'), path = gamedir + '/libraries/';
+        if (split.length != 3) return 'error';
+        path += split[0].replace(/\./g, '/');
+        path += '/' + split[1] + '/' + split[2] + '/' + split[1] + '-' + split[2] + '.jar';
+        return path + ';';
+    } else {
+        unzip(lib);
+        return '';
+    }
+};
+let unzip = (lib)=> {
+
+};
+
+exports.launch = (gamedir, username, uuid, version, xmx, code)=> {
+
     try{
-        var mine = JSON.parse(file.readFileSync(path,"utf-8"));
-        launch += "-Djava.library.path=\""+gameDir+"\\versions\\"+mine.id+"\\"+mine.id+"-natives\"" +
-            " -Dfml.ignoreInvalidMinecraftCertificates=true -Dfml.ignorePatchDiscrepancies=true -cp \"";
-        for (var i=0;i<mine.libraries.length;i++) {
-            if (mine.libraries[i].natives == null) {
-                launch += getLibsPath(mine.libraries[i].name);
+        let jsonfile = gamedir + "/versions/" + version + "/" + version + ".json",
+            launch = ['-Xmn128m', '-Xmx' + xmx, '-Dcheck=' + code],
+            mine = JSON.parse(fs.readFileSync(jsonfile, "utf-8")),
+            length = mine.libraries.length, classpath = '';
+        while (--length) {
+            let path = libpath(gamedir, mine.libraries[length]);
+            if (path == 'error') {
+                return ['error'];
+            } else {
+                classpath += path;
             }
-            else {
-                //解压本地包
-            }
         }
-        if(mine.jar!=null && mine.jar != ""){
-            launch += gameDir+"\\versions\\"+mine.jar+"\\"+mine.jar+".jar\" ";
+        // if null ???
+        if (mine.jar != null && mine.jar.endsWith('.jar')) {
+            classpath += gamedir + '/versions/' + mine.jar + '/' + mine.jar;
+        } else {
+            classpath += gamedir + '/versions/' + mine.id + '/' + mine.id + '.jar';
         }
-        else {
-            launch += gameDir+"\\versions\\"+mine.id+"\\"+mine.id+".jar\" ";
-        }
-        launch += mine.mainClass += " ";
-        var mcarg = mine.minecraftArguments
-            .replace("${auth_player_name}",user)
-            .replace("${version_name}", version)
-            .replace("${game_directory}", "\""+gameDir+"\"")
-            .replace("${game_assets}", "\""+gameDir+"\\assets\"")
-            .replace("${assets_root}", "\""+gameDir+"\\assets\"")
-            .replace("${user_type}", "Legacy")
-            .replace("${assets_index_name}", mine.assets)
-            .replace("${auth_uuid}","14233482b8dbad97617757a5c31d5872")
-            .replace("${auth_access_token}","14233482b8dbad97617757a5c31d5872")
-            .replace("${user_properties}", "{}");
-        return launch + mcarg;
+        launch.push('-Djava.library.path=' + jsonfile.replace('.json', '-natives'));
+        launch.push('-cp', classpath);
+        launch.push(mine.mainClass);
+        launch.push('--uuid', uuid);
+        launch.push('--width', '854');
+        launch.push('--height', '480');
+        launch.push('--version', version);
+        launch.push('--gameDir', gamedir);
+        launch.push('--username', username);
+        launch.push('--assetsDir', gamedir + '/assets');
+        launch.push('--userType', 'Legacy');
+        launch.push('--assetIndex', mine.assetIndex.id);
+        launch.push('--accessToken', uuid);
+        launch.push('--versionType', 'SoraClient');
+        return launch;
+    } catch (e) {
+        console.log(e);
+        return ['error'];
     }
-    catch (exception){
-        console.log(exception);
-    }
-}
-function getLibsPath(lib) {
-  var split = lib.split(':'),lib_path = ".minecraft\\libraries\\";//0 包; 1 名字; 2 版本
-  if(split.length != 3){
-    return "fuck";
-  }
-  lib_path += split[0].replace(/\./g,'\\');
-  lib_path += "\\" + split[1] + "\\" + split[2] + "\\" + split[1] + "-" + split[2] + ".jar;";
-  return lib_path;
-}
-
-exports.launch = function (user,version,javax,code) {
-    var exec = require('child_process').exec;
-    exec(getJavaArgs(user,version,javax,code),function (error) {
-        if(error){
-            console.log(error);
-            alert(error);
-        }
-        else {
-            console.log("success");
-        }
-    });
 };
