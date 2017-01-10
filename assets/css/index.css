@@ -1,11 +1,15 @@
 html {
     -webkit-user-select: none;
 }
-
 button {
     -webkit-app-region: no-drag;
 }
-
+body{
+    border: thin solid blue;
+}
+#root{
+    height: 100%;
+}
 .top-bar {
     color: #00bbff;
     padding: 10px;

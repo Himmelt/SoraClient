@@ -1,9 +1,3 @@
-/*******************************************************************************
- * Created by Kami on 2016/4/18.
- * Copyright (c) 2015-2016. Himmelt All rights reserved.
- * https://opensource.org/licenses/MIT
- ******************************************************************************/
-
 const fs = require('fs');
 
 let libpath = (gamedir, lib)=> {

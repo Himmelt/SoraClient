@@ -1,40 +1,32 @@
-/**
- * Created by Kami on 2016/4/30.
- */
-
-var file = require('fs'),
-    config = {
-        userlist: [],
-        gamemode: true,
-        keeppswd: true,
-        load: function (callback) {
-            file.readFile("config.json", "utf-8", function (error, data) {
-                if (error) {
-                    file.open("config.json", "w+", function (error) {
-                        if (error) {
-                            console.log(error);
-                        }
-                        config.save();
-                    });
-                }
-                else {
-                    config.copy(JSON.parse(data));
-                }
-                return callback();
-            });
-        },
-        save: function (callback) {
-            file.writeFile('config.json', JSON.stringify(config, null, 4), 'utf-8', function (error) {
-                if (error) {
-                    console.log(error);
-                }
-                return callback();
-            });
-        },
-        copy: function (object) {
-            for (var key in object) {
-                this[key] = object[key];
-            }
+const fs = require('fs');
+exports.Config = function (path) {
+    this.path = path;
+    this.cfg = {
+        username: "username",
+        password: "password"
+    };
+    this.load = () => {
+        let data;
+        try {
+            data = fs.readFileSync(this.path, {encoding: "utf8", flag: "r"});
+        } catch (e) {
+            console.log(e);
+        }
+        if (data) {
+            this.parse(JSON.parse(data));
         }
     };
-exports.config = config;
+    this.save = () => {
+        try {
+            fs.writeFileSync(this.path, JSON.stringify(this.cfg, null, 2));
+        } catch (e) {
+            console.log(e);
+        }
+    };
+    this.parse = (json) => {
+        for (let key in this.cfg) {
+            if (json[key]) this.cfg[key] = json[key];
+        }
+    };
+    this.load();
+};

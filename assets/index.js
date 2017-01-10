@@ -1,17 +1,11 @@
-/*******************************************************************************
- * Created by Himmelt on 2016/8/6.
- * Copyright (c) 2015-2016. Himmelt All rights reserved.
- * https://opensource.org/licenses/MIT
- ******************************************************************************/
-
 const React = require('react');
 const ReactDOM = require('react-dom');
 const { Row, Col } = require('antd');
-const MenuBar = require('./menubar');
-const TopBar = require('./topbar');
-const Container = require('./container');
+const MenuBar = require('./layout/menubar');
+const TopBar = require('./layout/topbar');
+const Container = require('./layout/container');
 const fs = require('fs');
-const marked = require('marked');
+const ipcR = require('electron').ipcRenderer;
 
 class Layout extends React.Component {
     constructor() {
@@ -24,7 +18,7 @@ class Layout extends React.Component {
                 console.log(err, "read readme.md failed!");
                 parent.setState({ mark: "error:" + err });
             } else {
-                parent.setState({ mark: marked(data) });
+                parent.setState({ mark: data });
             }
         });
     }

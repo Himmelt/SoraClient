@@ -91,7 +91,7 @@ var config = require('./js/config').config,
             }
         }
         if (username.val() == "") {
-            alert("傻X,连ID都不填还玩个毛线!!");
+            alert("玩个毛线!!");
         } else {
             var current = {username: "", password: ""};
             current.username = username.val();

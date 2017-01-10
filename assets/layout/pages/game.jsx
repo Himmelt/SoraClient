@@ -14,7 +14,8 @@ class Component extends React.Component {
     }
 
     handleClick() {
-        ipcR.send('launch-game');
+        // ipcR.send('launch-game');
+        console.log(global.config);
     }
 
     handleClose() {

@@ -5,7 +5,7 @@
  ******************************************************************************/
 
 const React = require('react');
-const {Button} = require('antd');
+const { Button } = require('antd');
 const ipcR = require('electron').ipcRenderer;
 
 class Component extends React.Component {
@@ -14,7 +14,8 @@ class Component extends React.Component {
     }
 
     handleClick() {
-        ipcR.send('launch-game');
+        // ipcR.send('launch-game');
+        console.log(global.config);
     }
 
     handleClose() {
@@ -26,13 +27,13 @@ class Component extends React.Component {
             null,
             React.createElement(
                 Button,
-                {onClick: this.handleClick},
-                '启动'
+                { onClick: this.handleClick },
+                '\u542F\u52A8'
             ),
             React.createElement(
                 Button,
-                {onClick: this.handleClose},
-                '结束'
+                { onClick: this.handleClose },
+                '\u7ED3\u675F'
             )
         );
     }
