@@ -1,11 +1,6 @@
-/*******************************************************************************
- * Created by Himmelt on 2016/8/7.
- * Copyright (c) 2015-2016. Himmelt All rights reserved.
- * https://opensource.org/licenses/MIT
- ******************************************************************************/
-
 const React = require('react');
-const {Menu, Icon} = require('antd');
+const Menu = require('antd/lib/menu');
+const Icon = require('antd/lib/icon');
 const SubMenu = Menu.SubMenu;
 
 class MenuBar extends React.Component {
@@ -23,7 +18,7 @@ class MenuBar extends React.Component {
 
     render() {
         return (
-            <Menu onClick={e=>this.handleClick(e)}
+            <Menu onClick={e => this.handleClick(e)}
                   style={{width: "200px"}}
                   defaultOpenKeys={['game']}
                   selectedKeys={[this.state.current]}

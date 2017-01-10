@@ -1,11 +1,5 @@
-/*******************************************************************************
- * Created by Himmelt on 2016/8/8.
- * Copyright (c) 2015-2016. Himmelt All rights reserved.
- * https://opensource.org/licenses/MIT
- ******************************************************************************/
-
 const React = require('react');
-const {Button} = require('antd');
+const Button = require('antd/lib/button');
 const ipcR = require('electron').ipcRenderer;
 
 class Component extends React.Component {
@@ -21,6 +15,7 @@ class Component extends React.Component {
     handleClose() {
         ipcR.send('launch-exit');
     }
+
     render() {
         return (
             <div>

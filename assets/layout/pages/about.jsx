@@ -1,11 +1,5 @@
-/*******************************************************************************
- * Created by Himmelt on 2016/8/7.
- * Copyright (c) 2015-2016. Himmelt All rights reserved.
- * https://opensource.org/licenses/MIT
- ******************************************************************************/
-
 const React = require('react');
-const {Button} = require('antd');
+const Button = require('antd/lib/button');
 
 class Component extends React.Component {
     constructor() {

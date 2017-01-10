@@ -2,7 +2,7 @@
 
 const electron = require('electron');
 const execFile = require('child_process').execFile;
-const minemc = require('./assets/js/minemc');
+const minemc = require('./assets/js/minecraft');
 const Config = require('./assets/js/config').Config;
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
@@ -13,7 +13,7 @@ const Tray = electron.Tray;
 const Menu = electron.Menu;
 // 对窗口对象使用全局引用,否则窗口会随着js的内存回收而关闭.
 let mainWindow;
-let config = new Config("config.json");
+let config = new Config(app.getPath('userData')+"\\config.json");
 
 app.on('ready', () => {
     mainWindow = new BrowserWindow({

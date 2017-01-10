@@ -1,12 +1,12 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const {Row, Col} = require('antd');
+const Col = require('antd/lib/col');
+const Row = require('antd/lib/row');
 const MenuBar = require('./layout/menubar');
 const TopBar = require('./layout/topbar');
 const Container = require('./layout/container');
 const fs = require('fs');
 const ipcR = require('electron').ipcRenderer;
-
 class Layout extends React.Component {
     constructor() {
         super();

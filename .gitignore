@@ -1,3 +1,6 @@
+/.idea
+*.js
+*.js.map
+!main.js
+!/assets/js/*.js
 /node_modules
-/minecraft
-/logs
