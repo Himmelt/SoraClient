@@ -7,18 +7,19 @@ class MenuBar extends React.Component {
     constructor() {
         super();
         this.state = {current: '1'};
+        this.fuckTest= key=>{};
     }
 
-    handleClick(e) {
-        this.props.onClick(e.key);
+    handleClick(item) {
+        this.props.fuckTest(item.key);
         this.setState({
-            current: e.key,
+            current: item.key,
         });
     };
 
     render() {
         return (
-            <Menu onClick={e => this.handleClick(e)}
+            <Menu onClick={item => this.handleClick(item)}
                   style={{width: "200px"}}
                   defaultOpenKeys={['game']}
                   selectedKeys={[this.state.current]}

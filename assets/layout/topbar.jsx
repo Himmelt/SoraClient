@@ -5,6 +5,23 @@ const Button = require('antd/lib/button');
 const ButtonGroup = Button.Group;
 const ipcR = require('electron').ipcRenderer;
 
+const Style =function () {
+    this.topBar = {
+        // height:50,
+        background: require('../js/styles').index,
+        WebkitAppRegion: 'drag'
+    };
+    this.logo = {
+        maxWidth:150,
+        maxHeight:this.topBar.height
+    };
+    this.btnGroup = {
+        float: 'right',
+        marginRight: 10
+    }
+};
+const styles = new Style();
+
 class TopBar extends React.Component {
     constructor() {
         super();
@@ -24,25 +41,15 @@ class TopBar extends React.Component {
 
     render() {
         return (
-            <div className="top-bar">
-                <Row type="flex" justify="space-around" align="middle">
-                    <Col span={4}>
-                        <div>Logo</div>
-                    </Col>
-                    <Col span={16}>
-                        <div>Profile</div>
-                    </Col>
-                    <Col span={4}>
-                        <div>
-                            <ButtonGroup>
-                                <Button icon="minus" onClick={this.handleMini}/>
-                                <Button icon="pushpin" onClick={this.handleTray}/>
-                                <Button icon="cross" onClick={this.handleClose}/>
-                            </ButtonGroup>
-                        </div>
-                    </Col>
-                </Row>
-            </div>
+            <Row style={styles.topBar} type="flex" justify="space-between" align="middle">
+                <img src="http://placehold.it/150x50"/>
+                <div>Profile</div>
+                <ButtonGroup style={styles.btnGroup}>
+                    <Button icon="minus" onClick={this.handleMini}/>
+                    <Button icon="pushpin" onClick={this.handleTray}/>
+                    <Button icon="cross" onClick={this.handleClose}/>
+                </ButtonGroup>
+            </Row>
         )
     }
 }

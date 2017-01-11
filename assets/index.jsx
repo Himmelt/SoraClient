@@ -7,20 +7,16 @@ const TopBar = require('./layout/topbar');
 const Container = require('./layout/container');
 const fs = require('fs');
 const ipcR = require('electron').ipcRenderer;
+const style = {
+    borderStyle: 'solid',
+    borderWidth: 'thin',
+    borderColor: require('./js/styles').index
+};
 class Layout extends React.Component {
     constructor() {
         super();
-        var parent = this;
-        this.state = {mark: "loading", index: 1};
+        this.state = {index: 1};
         this.handleMenu = this.handleMenu.bind(this);
-        fs.readFile('./readme.md', 'utf-8', function (err, data) {
-            if (err) {
-                console.log(err, "read readme.md failed!");
-                parent.setState({mark: "error:" + err})
-            } else {
-                parent.setState({mark: data})
-            }
-        })
     }
 
     handleMenu(key) {
@@ -31,22 +27,18 @@ class Layout extends React.Component {
     render() {
         return (
             <div>
-                <Row>
-                    <TopBar/>
-                </Row>
+                <TopBar/>
                 <Row type="flex">
-                    <Col>
-                        <MenuBar onClick={this.handleMenu}/>
-                    </Col>
-                    <Col style={{color: 'red'}}>
-                        <div>
-                            <Container index={this.state.index}/>
-                        </div>
-                    </Col>
+                    <MenuBar fuckTest={this.handleMenu}/>
+                    <Container index={this.state.index}/>
                 </Row>
             </div>
         )
     }
 }
 
-ReactDOM.render(<Layout />, document.getElementById('root'));
+ReactDOM.render(<Layout/>, document.getElementById('root'));
+let body = document.getElementById('body');
+body.style.borderStyle = style.borderStyle;
+body.style.borderWidth = style.borderWidth;
+body.style.borderColor = style.borderColor;

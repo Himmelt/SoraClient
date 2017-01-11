@@ -13,11 +13,12 @@ const Tray = electron.Tray;
 const Menu = electron.Menu;
 // 对窗口对象使用全局引用,否则窗口会随着js的内存回收而关闭.
 let mainWindow;
-let config = new Config(app.getPath('userData')+"\\config.json");
+let config = new Config(app.getPath('userData') + "\\config.json");
 
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 800, height: 600,
+        minWidth:400,minHeight:300,
         transparent: false,
         frame: false,
         backgroundColor: '#ffffff',
@@ -62,17 +63,26 @@ let mine;
 
 // 进程通讯监听
 ipcMain.on('put-in-tray', (event) => {
-    if (appTray) return;
-    appTray = new Tray('app-icon.png');
-    const contextMenu = Menu.buildFromTemplate([{
-        label: 'Remove',
-        click: function () {
-            event.sender.send('tray-removed');
-            appTray.destroy()
-        }
-    }]);
-    appTray.setToolTip('Electron Demo in the tray.');
-    appTray.setContextMenu(contextMenu)
+    if (appTray && !appTray.isDestroyed()) return;
+    appTray = new Tray('./assets/img/app-icon.png');
+    const contextMenu = Menu.buildFromTemplate([
+        {
+            label: '显示',
+            click:()=>{
+                mainWindow.show();
+                appTray.destroy();
+            }
+        },
+        {
+            label: 'Remove',
+            click: function () {
+                event.sender.send('tray-removed');
+                appTray.destroy();
+            }
+        }]);
+    appTray.setToolTip('空之境界');
+    appTray.setContextMenu(contextMenu);
+    mainWindow.hide();
 });
 ipcMain.on('remove-tray', () => {
     appTray.destroy()

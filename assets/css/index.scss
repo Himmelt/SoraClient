@@ -1,0 +1,23 @@
+html {
+  -webkit-user-select: none;
+}
+button {
+  -webkit-app-region: no-drag;
+}
+body{
+  //border: thin solid blue;
+  //border-color: #ffbbbb;
+  //border-style: solid;
+  //border-width: 0 0 0 1px;
+}
+#root{
+  height: 100%;
+}
+
+.top-logo{
+}
+.menu-bar {
+  color: #ffbbbb;
+  background: salmon;
+}
+

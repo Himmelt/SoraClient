@@ -4,3 +4,5 @@
 !main.js
 !/assets/js/*.js
 /node_modules
+/assets/css/index.css
+/assets/css/index.css.map
