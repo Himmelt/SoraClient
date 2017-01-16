@@ -1,44 +1,41 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const Col = require('antd/lib/col');
-const Row = require('antd/lib/row');
-const MenuBar = require('./layout/menubar');
-const TopBar = require('./layout/topbar');
-const Container = require('./layout/container');
-const fs = require('fs');
-const ipcR = require('electron').ipcRenderer;
-const style = {
-    borderStyle: 'solid',
-    borderWidth: 'thin',
-    borderColor: require('./js/styles').index
-};
-class Layout extends React.Component {
-    constructor() {
-        super();
-        this.state = {index: 1};
-        this.handleMenu = this.handleMenu.bind(this);
-    }
+const Layout = require('antd/lib/layout');
+const Header = require('./layout/header');
 
-    handleMenu(key) {
-        console.log("Fuck", key);
-        this.setState({index: key});
-    }
+const _style = function () {
+    this.react = {
+        height:'100%',
+        borderStyle:'solid',
+        borderColor:require('./style/global').index,
+        borderWidth:'thin'
+    };
+    this.header = {
+        height: 'initial',
+        lineHeight: 'initial',
+        padding: 5,
+        background: require('./style/global').index,
+        WebkitAppRegion: 'drag'
+    };
+}, styles = new _style();
 
+class Component extends React.Component {
     render() {
         return (
-            <div>
-                <TopBar/>
-                <Row type="flex">
-                    <MenuBar fuckTest={this.handleMenu}/>
-                    <Container index={this.state.index}/>
-                </Row>
-            </div>
+            <Layout style={styles.react}>
+                <Layout.Header style={styles.header}>
+                    <Header/>
+                </Layout.Header>
+                <Layout>
+                    <Layout.Sider>Sider</Layout.Sider>
+                    <Layout>
+                        <Layout.Content>Content</Layout.Content>
+                        <Layout.Footer>Footer</Layout.Footer>
+                    </Layout>
+                </Layout>
+            </Layout>
         )
     }
 }
 
-ReactDOM.render(<Layout/>, document.getElementById('root'));
-let body = document.getElementById('body');
-body.style.borderStyle = style.borderStyle;
-body.style.borderWidth = style.borderWidth;
-body.style.borderColor = style.borderColor;
+ReactDOM.render(<Component />, document.getElementById('root'));

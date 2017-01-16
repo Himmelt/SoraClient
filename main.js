@@ -18,7 +18,7 @@ let config = new Config(app.getPath('userData') + "\\config.json");
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 800, height: 600,
-        minWidth:400,minHeight:300,
+        minWidth: 400, minHeight: 300,
         transparent: false,
         frame: false,
         backgroundColor: '#ffffff',
@@ -63,12 +63,15 @@ let mine;
 
 // 进程通讯监听
 ipcMain.on('put-in-tray', (event) => {
-    if (appTray && !appTray.isDestroyed()) return;
-    appTray = new Tray('./assets/img/app-icon.png');
+    if (appTray && !appTray.isDestroyed()) {
+        mainWindow.hide();
+        return;
+    }
+    appTray = new Tray('./assets/img/icon.ico');
     const contextMenu = Menu.buildFromTemplate([
         {
             label: '显示',
-            click:()=>{
+            click: () => {
                 mainWindow.show();
                 appTray.destroy();
             }
@@ -82,6 +85,10 @@ ipcMain.on('put-in-tray', (event) => {
         }]);
     appTray.setToolTip('空之境界');
     appTray.setContextMenu(contextMenu);
+    appTray.on('double-click', () => {
+        mainWindow.show();
+        appTray.destroy();
+    });
     mainWindow.hide();
 });
 ipcMain.on('remove-tray', () => {

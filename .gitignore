@@ -1,8 +1,10 @@
 /.idea
 *.js
 *.js.map
+*.css
+*.css.map
 !main.js
 !/assets/js/*.js
+!/assets/style/*.js
 /node_modules
-/assets/css/index.css
-/assets/css/index.css.map
+
