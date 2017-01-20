@@ -4,10 +4,16 @@ const Icon = require('antd/lib/icon');
 const consts = require('../js/consts');
 
 class Component extends React.Component {
+    constructor() {
+        super();
+        this.state = {current: consts.pages.game};
+    }
+
     render() {
         return (
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={[consts.pages.current]} onClick={e => {
-                this.props.onClick(e.key)
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={[consts.pages.game]} onClick={e => {
+                this.props.onClick(e.key, e.key == this.state.current);
+                this.state.current = e.key;
             }}>
                 <Menu.Item key={consts.pages.game}>
                     <Icon type="user"/>

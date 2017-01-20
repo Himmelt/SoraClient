@@ -18,7 +18,7 @@ let config = new Config(app.getPath('userData') + "\\config.json");
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 800, height: 600,
-        minWidth: 400, minHeight: 300,
+        // minWidth: 400, minHeight: 300,
         transparent: false,
         frame: false,
         backgroundColor: '#ffffff',

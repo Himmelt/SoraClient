@@ -28,7 +28,7 @@ const _style = function () {
 class Component extends React.Component {
     constructor() {
         super();
-        this.state = {current: consts.pages.game}
+        this.state = {current: consts.pages.game, collapsed: false}
     }
 
     render() {
@@ -38,9 +38,9 @@ class Component extends React.Component {
                     <_Title/>
                 </Header>
                 <Layout>
-                    <Sider collapsible>
-                        <_Menu onClick={key => {
-                            this.setState({current: key})
+                    <Sider className="_menu" collapsible trigger={null} collapsed={this.state.collapsed} onCollapse={e=>{console.log(e)}}>
+                        <_Menu onClick={(key, toggle) => {
+                            this.setState({current: key, collapsed: toggle ^ this.state.collapsed})
                         }}/>
                     </Sider>
                     <Layout>
