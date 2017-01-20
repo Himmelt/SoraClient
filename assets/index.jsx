@@ -1,14 +1,17 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const Layout = require('antd/lib/layout');
-const Header = require('./layout/header');
-
+const {Header, Sider, Content, Footer} = Layout;
+const consts = require('./js/consts');
+const _Title = require('./layout/_title');
+const _Menu = require('./layout/_menu');
+const _Page = require('./layout/_page');
 const _style = function () {
     this.react = {
-        height:'100%',
-        borderStyle:'solid',
-        borderColor:require('./style/global').index,
-        borderWidth:'thin'
+        height: '100%',
+        borderStyle: 'solid',
+        borderColor: require('./style/global').index,
+        borderWidth: 'thin'
     };
     this.header = {
         height: 'initial',
@@ -17,20 +20,38 @@ const _style = function () {
         background: require('./style/global').index,
         WebkitAppRegion: 'drag'
     };
+    this.footer = {
+        WebkitAppRegion: 'drag'
+    }
 }, styles = new _style();
 
 class Component extends React.Component {
+    constructor() {
+        super();
+        this.state = {current: consts.pages.game}
+    }
+
     render() {
         return (
             <Layout style={styles.react}>
-                <Layout.Header style={styles.header}>
-                    <Header/>
-                </Layout.Header>
+                <Header style={styles.header}>
+                    <_Title/>
+                </Header>
                 <Layout>
-                    <Layout.Sider>Sider</Layout.Sider>
+                    <Sider collapsible>
+                        <_Menu onClick={key => {
+                            this.setState({current: key})
+                        }}/>
+                    </Sider>
                     <Layout>
-                        <Layout.Content>Content</Layout.Content>
-                        <Layout.Footer>Footer</Layout.Footer>
+                        <Content>
+                            <_Page current={this.state.current}/>
+                        </Content>
+                        <Footer style={styles.footer}>
+                            <div style={{textAlign: 'center'}}>
+                                <span>SoraWorld ©2017, Designed by Himmelt.</span>
+                            </div>
+                        </Footer>
                     </Layout>
                 </Layout>
             </Layout>

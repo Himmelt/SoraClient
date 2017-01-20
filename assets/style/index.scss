@@ -1,16 +1,28 @@
 html {
   -webkit-user-select: none;
 }
+
 button {
   -webkit-app-region: no-drag;
 }
-#root{
+
+#root {
   height: 100%;
 }
 
-.top-logo{
+.top-logo {
 }
+
 .menu-bar {
   color: #ffbbbb;
   background: salmon;
+}
+
+.ant-layout-sider-collapsed {
+  .anticon {
+    font-size: 16px;
+  }
+  .nav-text {
+    display: none;
+  }
 }

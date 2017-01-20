@@ -5,23 +5,20 @@ const System = require('./pages/system');
 const Guide = require('./pages/guide');
 const Donate = require('./pages/donate');
 const About = require('./pages/about');
+const consts = require('../js/consts');
 
 class Component extends React.Component {
-    constructor() {
-        super();
-    }
-
     render() {
-        let index = this.props.index;
-        if (index == 1) {
+        let current = this.props.current;
+        if (current == consts.pages.game) {
             return (<Game/>);
-        } else if (index == 2) {
+        } else if (current == consts.pages.config) {
             return (<Config/>);
-        } else if (index == 3) {
+        } else if (current == consts.pages.system) {
             return (<System/>);
-        } else if (index == 4) {
+        } else if (current == consts.pages.guide) {
             return (<Guide/>);
-        } else if (index == 5) {
+        } else if (current == consts.pages.donate) {
             return (<Donate/>);
         } else {
             return (<About/>);
